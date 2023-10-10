@@ -1,0 +1,174 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { clsx } from "clsx";
+---
+
+<div class="SiderBar-Container">
+  <img
+    src="/assets/images/MenuButton/OpenMenuButton.png"
+    alt="OpenMenuButton"
+    class="menuIcon"
+  />
+  <nav class={clsx("menu", "hide")}>
+    <img
+      src="/assets/images/MenuButton/CloseMenuButton.png"
+      alt="CloseMenuButton"
+      class="menu_Close"
+    />
+    <div class="menu_List">
+      <HeaderLink href="/" class={clsx("menu_List_Card", "Home")}>
+        <div class={clsx("menu_List_Card", "Cover")}></div>
+        <div class="menu_List_Card_Text">Home &gt;</div>
+      </HeaderLink>
+
+      <HeaderLink
+        href="/ContactPage"
+        class={clsx("menu_List_Card", "styles.Contact")}
+      >
+        <div class={clsx("menu_List_Card", "Cover")}></div>
+        <div class="menu_List_Card_Text">Contact &gt;</div>
+      </HeaderLink>
+
+      <HeaderLink
+        href="/SlapKyarunPage"
+        class={clsx("menu_List_Card", "SlapKyarun")}
+      >
+        <div class={clsx("menu_List_Card", "Cover")}></div>
+        <div class="menu_List_Card_Text">Slap Kyarun &gt;</div>
+      </HeaderLink>
+
+      <HeaderLink href="/BlogPage" class={clsx("menu_List_Card", "Blog")}>
+        <div class={clsx("menu_List_Card", "Cover")}></div>
+        <div class="menu_List_Card_Text">Blog &gt;</div>
+      </HeaderLink>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .menuIcon {
+    width: 2rem;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 98;
+  }
+
+  .menu {
+    z-index: 99;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    flex-direction: column;
+    width: 25rem;
+    height: 100%;
+    padding: 2rem;
+    border-radius: 0 20px 20px 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    justify-content: space-around;
+    transition: all 0.3s;
+  }
+
+  .menu_Close {
+    width: 1.4rem;
+    position: absolute;
+    top: 2.2rem;
+    right: 1.8rem;
+  }
+
+  .menu_List {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: calc(var(--vh, 1vh) * 80);
+  }
+
+  .menu_List a {
+    cursor: default;
+  }
+
+  .menu_List_Card {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    width: 90%;
+    height: 5rem;
+    margin-top: 1rem;
+    background-color: black;
+    padding: 0 1.4rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    background-size: cover;
+    overflow: hidden;
+    align-items: center;
+    box-sizing: border-box;
+    transition: all 0.3s;
+  }
+
+  .menu_List_Card:hover .Cover {
+    left: 0;
+  }
+
+  .menu_List_Card div {
+    z-index: 20;
+  }
+
+  .menu_List_Card_Text {
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+
+  .Cover {
+    position: absolute;
+    width: 100%;
+    height: 5rem;
+    background-color: #737898;
+    top: -1rem;
+    left: -100%;
+  }
+
+  .hide {
+    left: -25rem;
+  }
+
+  .show {
+    left: 0;
+  }
+
+  .Home {
+    background-position-y: -2.3rem;
+    background-image: url("/assets/images/HomePage/HomePageCard.png");
+  }
+
+  .Contact {
+    background-image: url("/assets/images/AboutMePage/AboutMePageCard.png");
+  }
+
+  .SlapKyarun {
+    background-position-y: -1.5rem;
+    background-image: url("/assets/images/SlapKyarunPage/SlapKyarunCard.png");
+  }
+
+  .Blog {
+    background-position-y: -1.2rem;
+    background-image: url("/assets/images/BlogPage/BlogPageCard.png");
+  }
+</style>
+
+<script>
+  const openMenuIcon = document.querySelector(".menuIcon");
+  const closeIcon = document.querySelector(".menu_Close");
+  const menu = document.querySelector(".menu");
+
+  openMenuIcon?.addEventListener("click", () => {
+    menu?.classList.add("show");
+    menu?.classList.remove("hide");
+  });
+  closeIcon?.addEventListener("click", () => {
+    menu?.classList.remove("show");
+    menu?.classList.add("hide");
+  });
+</script>
