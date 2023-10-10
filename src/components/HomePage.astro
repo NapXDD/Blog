@@ -1,0 +1,110 @@
+<div class="layout_container">
+  <div class="introduction_container">
+    <div class="introduction_entry">
+      <div class="introduction_detail">
+        <p class="introduction_info">
+          Hi there, just a blog to practice my web coding skill
+          <br />
+           I'm <strong>Khoa "Nap" Do Le Anh</strong>, currently studying at UIT
+        </p>
+        <p class="introduction_info">
+          A child that never touch a line of code somehow end up wanted to be a
+          software engineer
+        </p>
+      </div>
+      <span class="Circle">
+        <img
+          alt="ElyNambaOne"
+          class="CircleImage"
+          src={"/assets/images/HomePage/ElyNambaOne.jpg"}
+        />
+      </span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .layout_container {
+    max-width: 1500px;
+    width: 100%;
+    padding: 0 32px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .introduction_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .introduction_detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .introduction_entry {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #111315;
+    padding: 32px;
+    gap: 2rem;
+  }
+
+  .introduction_info {
+    color: #fff;
+  }
+
+  .Circle {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .CircleImage {
+    width: 280%;
+    height: auto;
+    background-color: #333;
+    margin-top: 20px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .introduction_entry {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 32px;
+      gap: 2rem;
+    }
+
+    .Circle {
+      display: flex;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background-color: white;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .CircleImage {
+      width: 260%;
+      height: auto;
+      background-color: #333;
+      margin-bottom: 20px;
+    }
+  }
+</style>
