@@ -4,11 +4,14 @@ import { clsx } from "clsx";
 ---
 
 <div class="SiderBar-Container">
-  <img
-    src="/assets/images/MenuButton/OpenMenuButton.png"
-    alt="OpenMenuButton"
-    class="menuIcon"
-  />
+  <div class="menuIcon-Background">
+    <img
+      src="/assets/images/MenuButton/OpenMenuButton.png"
+      alt="OpenMenuButton"
+      class="menuIcon"
+    />
+  </div>
+
   <nav class={clsx("menu", "hide")}>
     <img
       src="/assets/images/MenuButton/CloseMenuButton.png"
@@ -43,12 +46,20 @@ import { clsx } from "clsx";
 </div>
 
 <style>
+  .menuIcon-Background {
+    background-color: #737898;
+    position: fixed;
+  }
   .menuIcon {
     width: 2rem;
-    position: fixed;
     top: 1rem;
     left: 1rem;
     z-index: 98;
+    margin: 0 5px;
+  }
+
+  .menuIcon:hover {
+    cursor: pointer;
   }
 
   .menu {
@@ -72,6 +83,10 @@ import { clsx } from "clsx";
     position: absolute;
     top: 2.2rem;
     right: 1.8rem;
+  }
+
+  .menu_Close:hover {
+    cursor: pointer;
   }
 
   .menu_List {
@@ -104,6 +119,10 @@ import { clsx } from "clsx";
     transition: all 0.3s;
   }
 
+  .menu_List_Card:hover {
+    cursor: pointer;
+  }
+
   .menu_List_Card:hover .Cover {
     left: 0;
   }
@@ -116,6 +135,10 @@ import { clsx } from "clsx";
     color: #fff;
     display: flex;
     align-items: center;
+  }
+
+  .menu_List_Card_Text:hover {
+    cursor: pointer;
   }
 
   .Cover {
@@ -152,6 +175,10 @@ import { clsx } from "clsx";
   .Blog {
     background-position-y: -1.2rem;
     background-image: url("/assets/images/BlogPage/BlogPageCard.png");
+  }
+
+  .menuIcon_container {
+    background-color: white;
   }
 </style>
 

@@ -12,11 +12,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <!-- <Header title={SITE_TITLE} /> -->
     <SideBar />
     <main>
       <HomePage />
     </main>
     <Footer />
+    <style>
+      main {
+        background-color: #f7f5ee;
+      }
+    </style>
   </body>
 </html>
