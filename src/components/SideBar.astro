@@ -47,8 +47,11 @@ import { clsx } from "clsx";
 
 <style>
   .menuIcon-Background {
-    background-color: #737898;
+    background-color: #8a8a8a7c;
     position: fixed;
+    border-radius: 10px;
+    padding: 5px 7px;
+    margin: 5px 5px;
   }
   .menuIcon {
     width: 2rem;
@@ -58,8 +61,9 @@ import { clsx } from "clsx";
     margin: 0 5px;
   }
 
-  .menuIcon:hover {
+  .menuIcon-Background:hover {
     cursor: pointer;
+    background-color: #6666666c;
   }
 
   .menu {
@@ -183,7 +187,7 @@ import { clsx } from "clsx";
 </style>
 
 <script>
-  const openMenuIcon = document.querySelector(".menuIcon");
+  const openMenuIcon = document.querySelector(".menuIcon-Background");
   const closeIcon = document.querySelector(".menu_Close");
   const menu = document.querySelector(".menu");
 
