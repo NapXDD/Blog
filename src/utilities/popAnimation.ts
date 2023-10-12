@@ -5,13 +5,17 @@ interface pos {
   start: number;
 }
 
-const width = window.innerWidth;
-const height = window.innerHeight;
+let width = window.innerWidth;
+let height = window.innerHeight;
+
+document.addEventListener("scroll", () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+});
 
 let elapsed = 0;
 const duration = 3000;
 let frame = 0;
-let start = 100;
 let velocity = 100 / 90;
 
 const screenPos = {
@@ -28,11 +32,12 @@ const screenPos = {
   bottom: {
     id: 3,
     length: width,
-    start: 100,
+    start: height,
   },
   left: {
     id: 4,
     length: height,
+    start: -100,
   },
 };
 
@@ -41,7 +46,6 @@ const object = document.querySelector<HTMLElement>(".lmao");
 
 const animation = (pos: pos) => {
   elapsed += 1000 / 60;
-
   if (elapsed < duration) {
     switch (pos.id) {
       case 1: {
@@ -63,48 +67,51 @@ const animation = (pos: pos) => {
       case 2: {
         if (frame <= 89) {
           if (object) {
-            object.style.left = `${width - velocity}px`;
             object.style.top = `${pos.y}px`;
-            start -= velocity;
+            object.style.left = `${pos.start - velocity}px`;
+            pos.start -= velocity;
+          }
+        } else if (frame > 89 && frame < 180) {
+          if (object) {
+            object.style.left = `${pos.start + velocity}px`;
+            object.style.top = `${pos.y}px`;
+            pos.start += velocity;
+          }
+        }
+        break;
+      }
+      case 3: {
+        if (frame <= 89) {
+          if (object) {
+            object.style.left = `${pos.x}px`;
+            object.style.top = `${pos.start - velocity}px`;
+            pos.start -= velocity;
+          }
+        } else if (frame > 89 && frame < 180) {
+          if (object) {
+            object.style.left = `${pos.x}px`;
+            object.style.top = `${pos.start + velocity}px`;
+            pos.start += velocity;
+          }
+        }
+        break;
+      }
+      case 4: {
+        if (frame <= 89) {
+          if (object) {
+            object.style.left = `${pos.start + velocity}px`;
+            object.style.top = `${pos.y}px`;
+            pos.start += velocity;
           }
         } else if (frame > 89) {
           if (object) {
-            object.style.left = `${width + velocity}px`;
+            object.style.left = `${pos.start - velocity}px`;
             object.style.top = `${pos.y}px`;
-            start += velocity;
+            pos.start -= velocity;
           }
         }
+        break;
       }
-      // case 3: {
-      //   if (frame <= 89) {
-      //     if (object) {
-      //       object.style.left = `${pos.x}}px`;
-      //       object.style.top = `${height + start - velocity}px`;
-      //       start -= velocity;
-      //     }
-      //   } else if (frame > 89) {
-      //     if (object) {
-      //       object.style.left = `${pos.x}px`;
-      //       object.style.top = `${height + start + velocity}px`;
-      //       start -= velocity;
-      //     }
-      //   }
-      // }
-      // case 4: {
-      //   if (frame <= 89) {
-      //     if (object) {
-      //       object.style.left = `${start + velocity}px`;
-      //       object.style.top = `${pos.y}px`;
-      //       start += velocity;
-      //     }
-      //   } else if (frame > 89) {
-      //     if (object) {
-      //       object.style.left = `${start - velocity}px`;
-      //       object.style.top = `${pos.y}px`;
-      //       start -= velocity;
-      //     }
-      //   }
-      // }
     }
     frame++;
   } else if (elapsed >= duration) {
@@ -119,10 +126,10 @@ const animation = (pos: pos) => {
 };
 
 const spawnFuntion = () => {
-  const randomNumber = Math.floor(Math.random() * 1) + 2;
+  const randomNumber = Math.floor(Math.random() * 4) + 1;
   switch (randomNumber) {
     case 1: {
-      const randomLength = Math.floor(Math.random() * width - 30) + 30;
+      const randomLength = Math.floor(Math.random() * width - 300) + 300;
       const pos = {
         x: randomLength,
         y: 0,
@@ -132,19 +139,8 @@ const spawnFuntion = () => {
       popAnimation = setInterval(() => animation(pos), 1000 / 60);
       break;
     }
-    case 3: {
-      const randomLength = Math.floor(Math.random() * width - 10) + 10;
-      const pos = {
-        x: randomLength,
-        y: height,
-        id: randomNumber,
-        start: screenPos.bottom.start,
-      };
-      popAnimation = setInterval(() => animation(pos), 1000 / 60);
-      break;
-    }
     case 2: {
-      const randomLength = Math.floor(Math.random() * height - 10) + 10;
+      const randomLength = Math.floor(Math.random() * height - 300) + 300;
       const pos = {
         x: width,
         y: randomLength,
@@ -154,18 +150,31 @@ const spawnFuntion = () => {
       popAnimation = setInterval(() => animation(pos), 1000 / 60);
       break;
     }
+    case 3: {
+      const randomLength = Math.floor(Math.random() * width - 300) + 300;
+      const pos = {
+        x: randomLength,
+        y: height,
+        id: randomNumber,
+        start: screenPos.bottom.start,
+      };
+      popAnimation = setInterval(() => animation(pos), 1000 / 60);
+      break;
+    }
+
     case 4: {
-      const randomLength =
-        Math.floor(Math.random() * screenPos.left.length - 10) + 10;
-      const pos = { x: 0, y: randomLength, id: randomNumber, start: -100 };
+      const randomLength = Math.floor(Math.random() * height - 300) + 300;
+      const pos = {
+        x: 0,
+        y: randomLength,
+        id: randomNumber,
+        start: screenPos.left.start,
+      };
       popAnimation = setInterval(() => animation(pos), 1000 / 60);
       break;
     }
   }
 };
 
-// setInterval(() => spawnFuntion(), 5000);
-if (object) {
-  object.style.top = `${100}px`;
-  object.style.left = `${width}px`;
-}
+spawnFuntion();
+setInterval(() => spawnFuntion(), 5000);
