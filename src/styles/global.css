@@ -145,3 +145,7 @@ body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+:root {
+  zoom: reset;
+}
