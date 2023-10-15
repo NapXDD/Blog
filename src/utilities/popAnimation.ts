@@ -100,7 +100,7 @@ const animation = (pos: pos) => {
   }
 };
 
-const spawnFuntion = () => {
+export const spawnFuntion = () => {
   let width = window.innerWidth;
   let height = window.innerHeight;
   const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -166,5 +166,8 @@ const spawnFuntion = () => {
   }
 };
 
+// const timer = (ms: number) => new Promise((res) => setTimeout(res, ms));
+// let isActive = true;
+
 spawnFuntion();
-setInterval(() => spawnFuntion(), spawnDuration);
+let spawnAnimation = setInterval(() => spawnFuntion(), 4000);
