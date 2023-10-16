@@ -171,3 +171,31 @@ export const spawnFuntion = () => {
 
 spawnFuntion();
 let spawnAnimation = setInterval(() => spawnFuntion(), 4000);
+
+function clearIntervalWhenTabIsInactive() {
+  if (document.hidden) {
+    clearInterval(popAnimation);
+    clearInterval(spawnAnimation);
+    if (object) {
+      object.style.left = `-100%`;
+      object.style.top = `-100%`;
+      object.classList.remove("rotateRight");
+      object.classList.remove("rotateLeft");
+      object.classList.remove("rotateTop");
+    }
+  } else {
+    if (object) {
+      object.style.left = `-100%`;
+      object.style.top = `-100%`;
+      object.classList.remove("rotateRight");
+      object.classList.remove("rotateLeft");
+      object.classList.remove("rotateTop");
+    }
+    clearInterval(popAnimation);
+    clearInterval(spawnAnimation);
+    spawnFuntion();
+    spawnAnimation = setInterval(() => spawnFuntion(), 4000);
+  }
+}
+
+document.addEventListener("visibilitychange", clearIntervalWhenTabIsInactive);
