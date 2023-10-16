@@ -166,9 +166,6 @@ export const spawnFuntion = () => {
   }
 };
 
-// const timer = (ms: number) => new Promise((res) => setTimeout(res, ms));
-// let isActive = true;
-
 spawnFuntion();
 let spawnAnimation = setInterval(() => spawnFuntion(), 4000);
 
