@@ -167,7 +167,7 @@ export const spawnFuntion = () => {
 };
 
 spawnFuntion();
-let spawnAnimation = setInterval(() => spawnFuntion(), 4000);
+let spawnAnimation = setInterval(() => spawnFuntion(), spawnDuration);
 
 function clearIntervalWhenTabIsInactive() {
   if (document.hidden) {
@@ -191,7 +191,7 @@ function clearIntervalWhenTabIsInactive() {
     clearInterval(popAnimation);
     clearInterval(spawnAnimation);
     spawnFuntion();
-    spawnAnimation = setInterval(() => spawnFuntion(), 4000);
+    spawnAnimation = setInterval(() => spawnFuntion(), spawnDuration);
   }
 }
 
