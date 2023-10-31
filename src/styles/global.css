@@ -10,6 +10,11 @@
     0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
 }
 
+html {
+  min-height: 100vh;
+  background-color: #f7f5ee;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
