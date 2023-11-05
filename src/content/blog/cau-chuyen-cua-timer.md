@@ -20,7 +20,7 @@ clearInterval(lmao);
 
 Ờ thì nếu như mà chỉ có vậy thôi thì vẫn chưa có gì, Timer sau khi Inactive sẽ đưa action vào trong một cái event queue, stack ở trong đó, tới lúc bạn quay lại, Tab active lên thì nó sẽ fire hết cái mớ action trong event queue đó một lượt, sync lại với web app.
 
-Nhưng mà trường hợp của mình thì nó khác cái ở trên một tí, vì hành động của mình chia ra 2 lần action, lần thứ nhất là cứ sau 3s là nó lại gọi 1 cái ảnh random lên, rồi sau khi ảnh gọi lên thì mới chạy animation. Tức là code nó sẽ kiểu kiểu như vầy:
+Nhưng mà trường hợp của mình thì nó khác cái ở trên một tí, vì hành động của mình chia ra 2 lần action, thứ nhất là cứ sau 3s là nó lại gọi 1 cái ảnh random lên, rồi sau khi ảnh gọi lên thì mới chạy animation. Tức là code nó sẽ kiểu kiểu như vầy:
 
 ```js
 function doAnimation() {
