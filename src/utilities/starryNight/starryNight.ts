@@ -1,29 +1,7 @@
 import { createStarryNight, type Grammar, all } from "@wooorm/starry-night";
 import { visit } from "unist-util-visit";
-import * as Hast from "hast";
-/**
- * @typedef {import('@wooorm/starry-night').Grammar} Grammar
- * @typedef {import('hast').ElementContent} ElementContent
- * @typedef {import('hast').Root} Root
- */
-
-/**
- * @typedef Options
- *   Configuration (optional)
- * @property {Array<Grammar> | null | undefined} [grammars]
- *   Grammars to support (default: `common`).
- */
-
 import { toString } from "hast-util-to-string";
-
-/**
- * Highlight code with `starry-night`.
- *
- * @param {Options | null | undefined} options
- *   Configuration (optional).
- * @returns
- *   Transform.
- */
+import type * as Hast from "hast";
 
 interface Options {
   grammars?: Grammar[];
@@ -34,14 +12,6 @@ export default function rehypeStarryNight(options: Options) {
   const starryNightPromise = createStarryNight(grammars);
   const prefix = "language-";
 
-  /**
-   * Transform.
-   *
-   * @param {Root} tree
-   *   Tree.
-   * @returns {Promise<undefined>}
-   *   Nothing.
-   */
   return async function (tree: Hast.Root) {
     const starryNight = await starryNightPromise;
 
@@ -79,7 +49,7 @@ export default function rehypeStarryNight(options: Options) {
       const fragment = starryNight.highlight(toString(head), scope);
       const children = /** @type {Array<ElementContent>} */ fragment.children;
 
-      parent.children.splice(index, 1, {
+      parent.children.splice(index as any, 1, {
         type: "element",
         tagName: "div",
         properties: {
