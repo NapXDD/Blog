@@ -4,6 +4,7 @@ import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import rehypeStarryNight from "./starryNight/starryNight";
 
 export const emojis: Record<string, string> = {
   worry: "/assets/emoji/worry.png",
@@ -24,6 +25,7 @@ const markdown: AstroUserConfig["markdown"] = {
     [remarkRehype as unknown as string, { allowDangerousHtml: true }],
   ],
   rehypePlugins: [
+    rehypeStarryNight,
     [rehypeStringify as unknown as string, { allowDangerousHtml: true }],
     [rehypeCustomEmoji, { emojis }],
   ],
