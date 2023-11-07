@@ -25,7 +25,7 @@ const markdown: AstroUserConfig["markdown"] = {
     [remarkRehype as unknown as string, { allowDangerousHtml: true }],
   ],
   rehypePlugins: [
-    rehypeStarryNight,
+    rehypeStarryNight(),
     [rehypeStringify as unknown as string, { allowDangerousHtml: true }],
     [rehypeCustomEmoji, { emojis }],
   ],
