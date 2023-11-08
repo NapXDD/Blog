@@ -15,9 +15,6 @@ html {
   background-color: #f7f5ee;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
 @font-face {
   font-family: "Atkinson";
   src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -159,4 +156,8 @@ body {
   max-width: 24px;
   max-height: 24px;
   display: inline-block;
+}
+
+pre {
+  overflow-x: auto;
 }

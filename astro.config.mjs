@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import markdown from "./src/utilities/markdown";
+import markdown from "./src/libs/markdown";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
