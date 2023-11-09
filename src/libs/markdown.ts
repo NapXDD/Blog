@@ -1,9 +1,9 @@
 import type { AstroUserConfig } from "astro";
 import rehypeCustomEmoji from "rehype-custom-emoji";
-import rehypeStringify from "rehype-stringify";
+// import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
+// import remarkRehype from "remark-rehype";
 // import rehypeStarryNight from "./starryNight";
 
 export const emojis: Record<string, string> = {
@@ -20,8 +20,8 @@ export const emojis: Record<string, string> = {
 
 const markdown: AstroUserConfig["markdown"] = {
   remarkPlugins: [
-    remarkParse as unknown as string,
-    remarkGfm,
+    // remarkParse as unknown as string,
+    // remarkGfm,
     // [remarkRehype as unknown as string, { allowDangerousHtml: true }],
   ],
   rehypePlugins: [
