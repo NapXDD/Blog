@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 // import remarkRehype from "remark-rehype";
 // import rehypeStarryNight from "./starryNight";
+import "@wooorm/starry-night/style/light";
 
 export const emojis: Record<string, string> = {
   worry: "/assets/emoji/worry.png",

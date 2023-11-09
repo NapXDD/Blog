@@ -3,7 +3,7 @@
 // import { visit } from "unist-util-visit";
 // import type * as Hast from "hast";
 // import type { Plugin } from "unified";
-// import "@wooorm/starry-night/style/light";
+
 
 // interface Options {
 //   grammars?: Grammar[];
