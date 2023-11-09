@@ -1,43 +1,20 @@
-/**
- * @typedef {import('@wooorm/starry-night').Grammar} Grammar
- * @typedef {import('hast').ElementContent} ElementContent
- * @typedef {import('hast').Root} Root
- */
-
-/**
- * @typedef Options
- *   Configuration (optional)
- * @property {Array<Grammar> | null | undefined} [grammars]
- *   Grammars to support (default: `common`).
- */
-
-import { common, createStarryNight } from "@wooorm/starry-night";
+import { createStarryNight, all, type Grammar } from "@wooorm/starry-night";
 import { toString } from "hast-util-to-string";
 import { visit } from "unist-util-visit";
+import type * as Hast from "hast";
+import type { Plugin } from "unified";
+import "@wooorm/starry-night/style/light";
 
-/**
- * Highlight code with `starry-night`.
- *
- * @param {Options | null | undefined} options
- *   Configuration (optional).
- * @returns
- *   Transform.
- */
-export default function rehypeStarryNight(options) {
-  const settings = options || {};
-  const grammars = settings.grammars || common;
+interface Options {
+  grammars?: Grammar[];
+}
+
+const rehypeStarryNight: Plugin<Options[], Hast.Root> = (options) => {
+  const { grammars = all } = options || {};
   const starryNightPromise = createStarryNight(grammars);
   const prefix = "language-";
 
-  /**
-   * Transform.
-   *
-   * @param {Root} tree
-   *   Tree.
-   * @returns {Promise<undefined>}
-   *   Nothing.
-   */
-  return async function (tree) {
+  const plugin = async (tree: Hast.Root) => {
     const starryNight = await starryNightPromise;
 
     visit(tree, "element", function (node, index, parent) {
@@ -89,4 +66,7 @@ export default function rehypeStarryNight(options) {
       });
     });
   };
-}
+  return plugin;
+};
+
+export default rehypeStarryNight;
