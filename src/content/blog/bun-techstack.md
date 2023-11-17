@@ -1,16 +1,24 @@
 ---
 title: "Một chút về BETH techstack mới nổi gần đây"
-description: "hypermedia, htmx và mấy thứ xung quanh bun"
-pubDate: "Jul 02 2022"
+description: "hypermedia, HTMX và mấy thứ xung quanh bun"
+pubDate: "November 13 2023"
 heroImage: "/blog-placeholder-5.jpg"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+Tính viết bài này từ hồi mấy tháng trước những chưa có thời gian, nay có thời gian kèm với việc thằng react nó mới ra cái server component của nó nên viết luôn .
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+### Ủa rồi ra Server Component chi ?
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+Mới gần đây React quăng ra nguyên một cái cục component, đại khái là nó query sql thẳng trong component :thonking: từ thuở sơ khai ban đầu React được sinh ra là một UI library, sinh ra là để giải quyết vấn đề về front-end, Improve UX và là giải pháp hợp lí để giải quyết các app nặng về side effect.
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+React đơn thuần là một UI library, do có vấn đề về SEO nên thằng Next nó mới được sinh ra, Next là một React fullstack Framework và giải quyết các vấn đề mà React chưa giải quyết được <strike>mặc dù nó nặng vcl :thonking:</strike>
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+Thế rồi bằng một cách thần kì nào đó, No one ask nhưng React nó ra Server Component, query thẳng sql vào Component, chắc mục đích là cũng muốn React nó fullstack được, nhưng làm như thế thì khác gì quay trở lại web thời kì đầu và viết PHP :thonking:, tính ra viết vậy thì thà viết mô hình mvc cho xong :holyshiet:
+
+Các tinh hoa từ trước đến giờ mà mình thấy được của React, chính là JSX và Hook, JSX làm việc viết UI tiện hơn rất nhiều, còn Hook sinh ra để improve Life cycle code, khá là tiện. Mặc dù mình có nghe được nhiều ông FE dev nói rằng class đã lỗi thời và chê nó không còn hữu dụng. Nhưng tin mình đi, UI, side effect hay pass data từ mấy cái API không phải là những vấn đề duy nhất của Front-end đâu.
+
+### Bun ra đời
+
+Rồi bun ra đời trong một thời đại web có nhiều thư viện hay Framework nhiều không tả nổi, vừa mới ra đời, nhưng bun đã trở nên viral với những quảng cáo về performance vượt hẳn với những người đàn anh tiền nhiệm, nhưng mình cũng không tin mấy cái quảng cáo đấy lắm, nghe bịp nhiều quen rồi :thonking:
+
+Thứ mình để ý tới bun là <a href="https://elysiajs.com/" target="_blank">ElysiaJS</a> <strike>Chắc chắn không phải là do nó wjpu đâu</strike>, thật ra ban đầu mình chỉ nhìn nó như là một cái Backend Framework thôi, cơ mà sau cái video <a href="https://youtu.be/cpzowDDJj24?si=1biy9Nh85QyCXDXk">BETH techstack</a> thì thấy nó hay phết, cơ bản là quay trở lại full server side rendering, nhưng mà là serverless :thonking:, 
